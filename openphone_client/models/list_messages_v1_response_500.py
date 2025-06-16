@@ -1,0 +1,135 @@
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, Literal, TypeVar, Union, cast
+
+from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.list_messages_v1_response_500_errors_item import ListMessagesV1Response500ErrorsItem
+
+
+T = TypeVar("T", bound="ListMessagesV1Response500")
+
+
+@_attrs_define
+class ListMessagesV1Response500:
+    """
+    Attributes:
+        message (str):
+        code (Literal['0201500']):
+        status (Literal[500]):
+        docs (Literal['https://openphone.com/docs']):
+        title (Literal['Unknown']):
+        trace (Union[Unset, str]):
+        errors (Union[Unset, list['ListMessagesV1Response500ErrorsItem']]):
+    """
+
+    message: str
+    code: Literal["0201500"]
+    status: Literal[500]
+    docs: Literal["https://openphone.com/docs"]
+    title: Literal["Unknown"]
+    trace: Union[Unset, str] = UNSET
+    errors: Union[Unset, list["ListMessagesV1Response500ErrorsItem"]] = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
+        message = self.message
+
+        code = self.code
+
+        status = self.status
+
+        docs = self.docs
+
+        title = self.title
+
+        trace = self.trace
+
+        errors: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.errors, Unset):
+            errors = []
+            for errors_item_data in self.errors:
+                errors_item = errors_item_data.to_dict()
+                errors.append(errors_item)
+
+        field_dict: dict[str, Any] = {}
+        field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "message": message,
+                "code": code,
+                "status": status,
+                "docs": docs,
+                "title": title,
+            }
+        )
+        if trace is not UNSET:
+            field_dict["trace"] = trace
+        if errors is not UNSET:
+            field_dict["errors"] = errors
+
+        return field_dict
+
+    @classmethod
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.list_messages_v1_response_500_errors_item import ListMessagesV1Response500ErrorsItem
+
+        d = dict(src_dict)
+        message = d.pop("message")
+
+        code = cast(Literal["0201500"], d.pop("code"))
+        if code != "0201500":
+            raise ValueError(f"code must match const '0201500', got '{code}'")
+
+        status = cast(Literal[500], d.pop("status"))
+        if status != 500:
+            raise ValueError(f"status must match const 500, got '{status}'")
+
+        docs = cast(Literal["https://openphone.com/docs"], d.pop("docs"))
+        if docs != "https://openphone.com/docs":
+            raise ValueError(f"docs must match const 'https://openphone.com/docs', got '{docs}'")
+
+        title = cast(Literal["Unknown"], d.pop("title"))
+        if title != "Unknown":
+            raise ValueError(f"title must match const 'Unknown', got '{title}'")
+
+        trace = d.pop("trace", UNSET)
+
+        errors = []
+        _errors = d.pop("errors", UNSET)
+        for errors_item_data in _errors or []:
+            errors_item = ListMessagesV1Response500ErrorsItem.from_dict(errors_item_data)
+
+            errors.append(errors_item)
+
+        list_messages_v1_response_500 = cls(
+            message=message,
+            code=code,
+            status=status,
+            docs=docs,
+            title=title,
+            trace=trace,
+            errors=errors,
+        )
+
+        list_messages_v1_response_500.additional_properties = d
+        return list_messages_v1_response_500
+
+    @property
+    def additional_keys(self) -> list[str]:
+        return list(self.additional_properties.keys())
+
+    def __getitem__(self, key: str) -> Any:
+        return self.additional_properties[key]
+
+    def __setitem__(self, key: str, value: Any) -> None:
+        self.additional_properties[key] = value
+
+    def __delitem__(self, key: str) -> None:
+        del self.additional_properties[key]
+
+    def __contains__(self, key: str) -> bool:
+        return key in self.additional_properties

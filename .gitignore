@@ -1,0 +1,9 @@
+# Python build artefacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/ build/
+# virtualenvs
+.venv/ .tox/ .mypy_cache/
+# editor junk
+.idea/ .vscode/

@@ -6,15 +6,23 @@ authors = []
 readme = "README.md"
 packages = [
     {include = "openphone_client"},
+    { include = "openphone_sdk" },
 ]
 include = ["CHANGELOG.md", "openphone_client/py.typed"]
 
 
+# ─── dependencies ──────────────────────────────────────────────
 [tool.poetry.dependencies]
 python = "^3.9"
-httpx = ">=0.23.0,<0.29.0"
-attrs = ">=22.2.0"
+httpx  = ">=0.23.0,<0.29.0"
+attrs  = ">=22.2.0"
 python-dateutil = "^2.8.0"
+
+# ─── dev-only deps (older Poetry uses the dash, not a dot) ────
+[tool.poetry.dev-dependencies]
+pytest       = "^8.2"
+pytest-httpx = "^0.30"
+
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -28,6 +36,4 @@ select = ["F", "I", "UP"]
 
 [tool.mypy]
 strict = true
-[tool.poetry.group.dev.dependencies]   # <-- add this
-pytest = "^8.2"
-pytest-httpx = "^0.30"
+

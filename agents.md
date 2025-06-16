@@ -1,5 +1,5 @@
 # Agent Work Instructions
-Find the first unchecked item in **todo.md** and:
+Find the corresponding indicated item from the prompt in **todo.md** and:
 
 1. Add wrapper(s) in **`openphone_sdk/`**
 2. Re-export in **`openphone_sdk/__init__.py`**
@@ -8,6 +8,7 @@ Find the first unchecked item in **todo.md** and:
 5. Run `pytest` locally; open the PR only if tests pass
 
 ## Coding conventions
+* Please see docs folder for examples of wrappers and tests.
 * Import the shared helper `client()` from `openphone_sdk.request` – **never** create your own `AuthenticatedClient`.
 * Place all functions for the same path in a single module (`openphone_sdk/<name>.py`).
 * Map 1:1 to *happy-path* return types – raise on any non-200 status.

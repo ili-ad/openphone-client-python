@@ -4,12 +4,12 @@ from __future__ import annotations
 import os
 from typing import Final
 
-from openphone_client import Client, AsyncClient   # <-- import AsyncClient
+from openphone_client import AuthenticatedClient
 
 BASE: Final[str] = os.getenv("OPENPHONE_BASE_URL", "https://api.openphone.com")
 
-_sync: Client | None = None
-_async: AsyncClient | None = None
+_sync: AuthenticatedClient | None = None
+_async: AuthenticatedClient | None = None
 
 
 def _get_key() -> str:
@@ -21,28 +21,32 @@ def _get_key() -> str:
     return key
 
 
-def _sync_client() -> Client:
+def _sync_client() -> AuthenticatedClient:
     global _sync
     if _sync is None:
-        _sync = Client(base_url=f"{BASE}/v1", headers={"X-API-KEY": _get_key()})
+        _sync = AuthenticatedClient(
+            base_url=BASE, headers={"X-API-KEY": _get_key()}, token=""
+        )
     return _sync
 
 
-def _async_client() -> AsyncClient:
+def _async_client() -> AuthenticatedClient:
     global _async
     if _async is None:
-        _async = AsyncClient(base_url=f"{BASE}/v1", headers={"X-API-KEY": _get_key()})
+        _async = AuthenticatedClient(
+            base_url=BASE, headers={"X-API-KEY": _get_key()}, token=""
+        )
     return _async
 
 
 # Public helpers -------------------------------------------------------------
 
 
-def client() -> Client:
+def client() -> AuthenticatedClient:
     """Shared synchronous client."""
     return _sync_client()
 
 
-def aclient() -> AsyncClient:
+def aclient() -> AuthenticatedClient:
     """Shared asynchronous client (for upcoming async wrappers)."""
     return _async_client()

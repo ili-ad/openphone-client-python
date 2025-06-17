@@ -6,7 +6,11 @@ from typing import Final
 
 from openphone_client import Client
 
-BASE: Final[str] = os.getenv("OPENPHONE_BASE_URL", "https://api.openphone.com")
+
+from openphone_client import AuthenticatedClient
+
+
+BASE: Final[str] = os.getenv("OPENPHONE_BASE_URL", "https://api.openphone.com") 
 
 _sync: Client | None = None
 _async: Client | None = None
@@ -38,7 +42,7 @@ def _async_client() -> Client:
 # Public helpers -------------------------------------------------------------
 
 
-def client() -> Client:
+def client() -> AuthenticatedClient:
     """Shared synchronous client."""
     return _sync_client()
 

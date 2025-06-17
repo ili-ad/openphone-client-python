@@ -4,9 +4,10 @@ from __future__ import annotations
 import os
 from typing import Final
 
+
 from openphone_client import AuthenticatedClient
 
-BASE: Final[str] = os.getenv("OPENPHONE_BASE_URL", "https://api.openphone.com")
+BASE: Final[str] = os.getenv("OPENPHONE_BASE_URL", "https://api.openphone.com")  
 
 _sync: AuthenticatedClient | None = None
 _async: AuthenticatedClient | None = None

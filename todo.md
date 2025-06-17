@@ -19,5 +19,5 @@
 - [ ] 18. wrap `/webhooks/create-call-webhook` → `openphone_sdk/create_call_webhook.py`
 - [ ] 19. wrap `/webhooks/create-message-webhook` → `openphone_sdk/create_message_webhook.py`
 - [ ] 20. wrap `/webhooks/delete-webhook-by-id` → `openphone_sdk/delete_webhook_by_id.py`
-- [ ] 21. wrap `/webhooks/get-webhook-by-id` → `openphone_sdk/get_webhook_by_id.py`
+- [x] 21. wrap `/webhooks/get-webhook-by-id` → `openphone_sdk/get_webhook_by_id.py`
 - [ ] 22. wrap `/webhooks/list-webhooks` → `openphone_sdk/list_webhooks.py`

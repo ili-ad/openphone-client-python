@@ -3,13 +3,13 @@
 - [ ] 2. wrap `/calls/get-call-summary` → `openphone_sdk/get_call_summary.py`
 - [ ] 3. wrap `/calls/get-call-transcript` → `openphone_sdk/get_call_transcript.py`
 - [ ] 4. wrap `/calls/list-calls` → `openphone_sdk/list_calls.py`
-- [ ] 5. wrap `/contact-custom-fields/get-contact-custom-fields` → `openphone_sdk/get_contact_custom_fields.py`
+- [x] 5. wrap `/contact-custom-fields/get-contact-custom-fields` → `openphone_sdk/get_contact_custom_fields.py`
 - [ ] 6. wrap `/contacts/create-contact` → `openphone_sdk/create_contact.py`
 - [ ] 7. wrap `/contacts/delete-contact` → `openphone_sdk/delete_contact.py`
 - [ ] 8. wrap `/contacts/get-contact-by-id` → `openphone_sdk/get_contact_by_id.py`
 - [ ] 9. wrap `/contacts/list-contacts` → `openphone_sdk/list_contacts.py`
 - [ ] 10. wrap `/contacts/update-contact-by-id` → `openphone_sdk/update_contact_by_id.py`
-- [ ] 11. wrap `/conversations/list-conversations` → `openphone_sdk/list_conversations.py`
+- [x] 11. wrap `/conversations/list-conversations` → `openphone_sdk/list_conversations.py`
 - [ ] 12. wrap `/messages/get-message-by-id` → `openphone_sdk/get_message_by_id.py`
 - [ ] 13. wrap `/messages/list-messages` → `openphone_sdk/list_messages.py`
 - [ ] 14. wrap `/messages/send-message` → `openphone_sdk/send_message.py`
@@ -20,4 +20,4 @@
 - [ ] 19. wrap `/webhooks/create-message-webhook` → `openphone_sdk/create_message_webhook.py`
 - [ ] 20. wrap `/webhooks/delete-webhook-by-id` → `openphone_sdk/delete_webhook_by_id.py`
 - [ ] 21. wrap `/webhooks/get-webhook-by-id` → `openphone_sdk/get_webhook_by_id.py`
-- [ ] 22. wrap `/webhooks/list-webhooks` → `openphone_sdk/list_webhooks.py`
+- [x] 22. wrap `/webhooks/list-webhooks` → `openphone_sdk/list_webhooks.py`

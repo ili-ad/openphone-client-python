@@ -5,12 +5,16 @@ import os
 from typing import Final
 
 from openphone_client import Client
+
 from httpx import AsyncClient
+
+
 
 BASE: Final[str] = os.getenv("OPENPHONE_BASE_URL", "https://api.openphone.com")
 
 _sync: Client | None = None
-_async: AsyncClient | None = None
+_async: Client | None = None
+
 
 
 def _get_key() -> str:
@@ -29,7 +33,9 @@ def _sync_client() -> Client:
     return _sync
 
 
-def _async_client() -> AsyncClient:
+
+
+def _async_client() -> Client:
     global _async
     if _async is None:
         _async = AsyncClient(base_url=BASE, headers={"X-API-KEY": _get_key()})
@@ -44,6 +50,6 @@ def client() -> Client:
     return _sync_client()
 
 
-def aclient() -> AsyncClient:
+def aclient() -> Client:
     """Shared asynchronous client (for upcoming async wrappers)."""
     return _async_client()

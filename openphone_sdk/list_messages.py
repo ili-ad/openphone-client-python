@@ -25,7 +25,7 @@ def list_messages(
         client=client(),
         phone_number_id=phone_number_id,
         user_id=user_id,
-        participants=participants,
+        participants=participants if participants else UNSET,
         since=since,
         created_after=created_after,
         created_before=created_before,

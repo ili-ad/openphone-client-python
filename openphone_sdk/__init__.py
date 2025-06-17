@@ -1,3 +1,6 @@
+from dotenv import load_dotenv
+load_dotenv()
+
 from .create_call_summary_webhook import create_call_summary_webhook
 from .get_call_recordings import get_call_recordings
 from .get_call_summary import get_call_summary

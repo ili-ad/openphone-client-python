@@ -1,52 +1,27 @@
-# openphone_sdk/request.py
 from __future__ import annotations
 
 import os
-from typing import Final
-
+import httpx
 from openphone_client import Client
 
-# NOTE: openphone_client does not expose a dedicated AsyncClient class. Until
-# one exists, we alias `Client` for asynchronous helpers so imports succeed.
-AsyncClient = Client
+BASE_URL = os.getenv("OPENPHONE_BASE_URL", "https://api.openphone.com")
+API_KEY  = os.getenv("OPENPHONE_API_KEY")
+if not API_KEY:
+    raise RuntimeError("Set OPENPHONE_API_KEY")
 
-BASE: Final[str] = os.getenv("OPENPHONE_BASE_URL", "https://api.openphone.com")
+_sdk = Client(                     # the generated wrapper
+    base_url=BASE_URL,
+    headers={"Authorization": API_KEY},
+)
 
-_sync: Client | None = None
-_async: AsyncClient | None = None
-
-
-def _get_key() -> str:
-    key = os.getenv("OPENPHONE_API_KEY", "").strip()
-    if not key:
-        raise RuntimeError(
-            "OPENPHONE_API_KEY environment variable is required before making requests."
-        )
-    return key
+def client() -> Client:            # keep for future wrappers
+    return _sdk
 
 
-def _sync_client() -> Client:
-    global _sync
-    if _sync is None:
-        _sync = Client(base_url=BASE, headers={"X-API-KEY": _get_key()})
-    return _sync
+_httpx = httpx.Client(
+    base_url=BASE_URL,
+    headers={"Authorization": API_KEY},
+)
 
-
-def _async_client() -> AsyncClient:
-    global _async
-    if _async is None:
-        _async = AsyncClient(base_url=BASE, headers={"X-API-KEY": _get_key()})
-    return _async
-
-
-# Public helpers -------------------------------------------------------------
-
-
-def client() -> Client:
-    """Shared synchronous client."""
-    return _sync_client()
-
-
-def aclient() -> AsyncClient:
-    """Shared asynchronous client (for upcoming async wrappers)."""
-    return _async_client()
+def httpx_client() -> httpx.Client:   # ← add
+    return _httpx

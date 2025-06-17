@@ -122,3 +122,7 @@ If you want to install this client into another project without publishing it (e
 1. If that project is not using Poetry:
     1. Build a wheel with `poetry build -f wheel`
     1. Install that wheel from the other project `pip install <path-to-wheel>`
+
+## Implementation notes
+🔑 Some older OpenPhone workspaces issue 32-character keys (no `sk_live_` prefix).  
+Use the exact value shown after you click **Copy** in the dashboard.

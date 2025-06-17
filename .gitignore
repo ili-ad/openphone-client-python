@@ -7,3 +7,5 @@ dist/ build/
 .venv/ .tox/ .mypy_cache/
 # editor junk
 .idea/ .vscode/
+# env
+.env

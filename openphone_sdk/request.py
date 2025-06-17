@@ -4,20 +4,12 @@ from __future__ import annotations
 import os
 from typing import Final
 
-try:  # openphone_client may not expose AsyncClient
-    from openphone_client import Client, AsyncClient  # type: ignore
-except ImportError:  # pragma: no cover - fallback for older versions
-    from openphone_client import Client
+from openphone_client import Client
 
-    AsyncClient = Client  # type: ignore[misc,assignment]
-
-
-BASE: Final[str] = os.getenv("OPENPHONE_BASE_URL", "https://api.openphone.com") 
+BASE: Final[str] = os.getenv("OPENPHONE_BASE_URL", "https://api.openphone.com")
 
 _sync: Client | None = None
-
-_async: Client | None = None
-
+_async = None  # async client placeholder for future use
 
 
 def _get_key() -> str:
@@ -36,9 +28,21 @@ def _sync_client() -> Client:
     return _sync
 
 
+def _async_client() -> Client:
+    global _async
+    if _async is None:
+        _async = Client(base_url=BASE, headers={"X-API-KEY": _get_key()})
+    return _async
+
+
 # Public helpers -------------------------------------------------------------
 
 
-def client() -> AuthenticatedClient:
+def client() -> Client:
     """Shared synchronous client."""
     return _sync_client()
+
+
+def aclient() -> Client:
+    """Shared asynchronous client (for upcoming async wrappers)."""
+    return _async_client()

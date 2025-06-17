@@ -4,7 +4,11 @@ from __future__ import annotations
 import os
 from typing import Final
 
-from openphone_client import Client, AsyncClient   # <-- import AsyncClient
+from openphone_client import Client
+
+# NOTE: generated client exposes async helpers on ``Client`` itself, so
+# alias ``AsyncClient`` for upcoming wrappers expecting this name.
+AsyncClient = Client
 
 BASE: Final[str] = os.getenv("OPENPHONE_BASE_URL", "https://api.openphone.com")
 
@@ -24,14 +28,14 @@ def _get_key() -> str:
 def _sync_client() -> Client:
     global _sync
     if _sync is None:
-        _sync = Client(base_url=f"{BASE}/v1", headers={"X-API-KEY": _get_key()})
+        _sync = Client(base_url=BASE, headers={"X-API-KEY": _get_key()})
     return _sync
 
 
 def _async_client() -> AsyncClient:
     global _async
     if _async is None:
-        _async = AsyncClient(base_url=f"{BASE}/v1", headers={"X-API-KEY": _get_key()})
+        _async = AsyncClient(base_url=BASE, headers={"X-API-KEY": _get_key()})
     return _async
 
 

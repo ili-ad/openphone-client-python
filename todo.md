@@ -89,3 +89,13 @@ delete_contact(cid)
 print("✓ cleanup done")
 
 
+-----
+
+3. First thoughts on wiring into ERPNext
+decision	minimal, practical approach
+Where to run the OpenPhone code?	A small Frappe App inside your ERPNext bench. Keeps everything in-process; you can still break it out later.
+Inbound flow (calls / SMS)	1. In OpenPhone dashboard create Webhooks → point to /api/method/openphone_inbox.webhook.
+2. In the Frappe app define that whitelisted method: deserialize payload, look up / create a Communication doc (or a custom DocType “OpenPhone Message”), link it to Customer / Lead by phone number.
+Outbound flow (send SMS)	Add a Server Script or ERPNext “SMS Center” integration that calls openphone_sdk.send_message when users hit “Send SMS” on Contact / Communication.
+Config	Store OPENPHONE_API_KEY with bench set-config openphone_api_key <key>; fetch via frappe.conf.openphone_api_key.
+Background jobs	Long-running things (e.g., downloading call transcripts) → enqueue via frappe.enqueue.

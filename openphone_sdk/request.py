@@ -46,6 +46,7 @@ def client() -> AuthenticatedClient:
     """Shared synchronous client."""
     return _sync_client()
 
+
 def aclient() -> AuthenticatedClient:
     """Shared asynchronous client (for upcoming async wrappers)."""
     return _async_client()

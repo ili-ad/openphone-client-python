@@ -10,7 +10,7 @@
 - [ ] 9. wrap `/contacts/list-contacts` → `openphone_sdk/list_contacts.py`
 - [ ] 10. wrap `/contacts/update-contact-by-id` → `openphone_sdk/update_contact_by_id.py`
 - [ ] 11. wrap `/conversations/list-conversations` → `openphone_sdk/list_conversations.py`
-- [ ] 12. wrap `/messages/get-message-by-id` → `openphone_sdk/get_message_by_id.py`
+- [x] 12. wrap `/messages/get-message-by-id` → `openphone_sdk/get_message_by_id.py`
 - [ ] 13. wrap `/messages/list-messages` → `openphone_sdk/list_messages.py`
 - [ ] 14. wrap `/messages/send-message` → `openphone_sdk/send_message.py`
 - [ ] 15. wrap `/phone-numbers/list-phone-numbers` → `openphone_sdk/list_phone_numbers.py`

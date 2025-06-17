@@ -10,10 +10,14 @@ from openphone_client import Client
 # alias ``AsyncClient`` for upcoming wrappers expecting this name.
 AsyncClient = Client
 
-BASE: Final[str] = os.getenv("OPENPHONE_BASE_URL", "https://api.openphone.com")
+
+from openphone_client import AuthenticatedClient
+
+
+BASE: Final[str] = os.getenv("OPENPHONE_BASE_URL", "https://api.openphone.com") 
 
 _sync: Client | None = None
-_async: AsyncClient | None = None
+_async: Client | None = None
 
 
 def _get_key() -> str:
@@ -42,11 +46,11 @@ def _async_client() -> AsyncClient:
 # Public helpers -------------------------------------------------------------
 
 
-def client() -> Client:
+def client() -> AuthenticatedClient:
     """Shared synchronous client."""
     return _sync_client()
 
 
-def aclient() -> AsyncClient:
+def aclient() -> AuthenticatedClient:
     """Shared asynchronous client (for upcoming async wrappers)."""
     return _async_client()

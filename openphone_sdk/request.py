@@ -4,14 +4,12 @@ from __future__ import annotations
 import os
 from typing import Final
 
-from openphone_client import Client
+try:  # openphone_client may not expose AsyncClient
+    from openphone_client import Client, AsyncClient  # type: ignore
+except ImportError:  # pragma: no cover - fallback for older versions
+    from openphone_client import Client
 
-# NOTE: generated client exposes async helpers on ``Client`` itself, so
-# alias ``AsyncClient`` for upcoming wrappers expecting this name.
-AsyncClient = Client
-
-
-from openphone_client import AuthenticatedClient
+    AsyncClient = Client  # type: ignore[misc,assignment]
 
 
 BASE: Final[str] = os.getenv("OPENPHONE_BASE_URL", "https://api.openphone.com") 

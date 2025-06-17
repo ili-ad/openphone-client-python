@@ -33,5 +33,3 @@ def _sync_client() -> Client:
 def client() -> Client:
     """Shared synchronous client."""
     return _sync_client()
-
-

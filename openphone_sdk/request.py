@@ -6,9 +6,20 @@ from typing import Final
 
 from openphone_client import Client
 
-BASE: Final[str] = os.getenv("OPENPHONE_BASE_URL", "https://api.openphone.com")
+# NOTE: generated client exposes async helpers on ``Client`` itself, so
+# alias ``AsyncClient`` for upcoming wrappers expecting this name.
+AsyncClient = Client
+
+
+from openphone_client import AuthenticatedClient
+
+
+BASE: Final[str] = os.getenv("OPENPHONE_BASE_URL", "https://api.openphone.com") 
 
 _sync: Client | None = None
+
+_async: Client | None = None
+
 
 
 def _get_key() -> str:
@@ -30,8 +41,6 @@ def _sync_client() -> Client:
 # Public helpers -------------------------------------------------------------
 
 
-def client() -> Client:
+def client() -> AuthenticatedClient:
     """Shared synchronous client."""
     return _sync_client()
-
-

@@ -6,14 +6,14 @@ from typing import Final
 
 from openphone_client import Client
 
+# NOTE: openphone_client does not expose a dedicated AsyncClient class. Until
+# one exists, we alias `Client` for asynchronous helpers so imports succeed.
+AsyncClient = Client
 
-from openphone_client import AuthenticatedClient
-
-
-BASE: Final[str] = os.getenv("OPENPHONE_BASE_URL", "https://api.openphone.com") 
+BASE: Final[str] = os.getenv("OPENPHONE_BASE_URL", "https://api.openphone.com")
 
 _sync: Client | None = None
-_async: Client | None = None
+_async: AsyncClient | None = None
 
 
 def _get_key() -> str:
@@ -32,21 +32,21 @@ def _sync_client() -> Client:
     return _sync
 
 
-def _async_client() -> Client:
+def _async_client() -> AsyncClient:
     global _async
     if _async is None:
-        _async = Client(base_url=BASE, headers={"X-API-KEY": _get_key()})
+        _async = AsyncClient(base_url=BASE, headers={"X-API-KEY": _get_key()})
     return _async
 
 
 # Public helpers -------------------------------------------------------------
 
 
-def client() -> AuthenticatedClient:
+def client() -> Client:
     """Shared synchronous client."""
     return _sync_client()
 
 
-def aclient() -> Client:
+def aclient() -> AsyncClient:
     """Shared asynchronous client (for upcoming async wrappers)."""
     return _async_client()

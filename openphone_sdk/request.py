@@ -7,10 +7,12 @@ from typing import Final
 from httpx import AsyncClient
 from openphone_client.client import Client
 
+from httpx import AsyncClient
+
 BASE: Final[str] = os.getenv("OPENPHONE_BASE_URL", "https://api.openphone.com")
 
 _sync: Client | None = None
-_async: AsyncClient | None = None
+_async: Client | None = None
 
 
 def _get_key() -> str:
@@ -44,6 +46,6 @@ def client() -> Client:
     return _sync_client()
 
 
-def aclient() -> AsyncClient:
+def aclient() -> Client:
     """Shared asynchronous client (for upcoming async wrappers)."""
     return _async_client()

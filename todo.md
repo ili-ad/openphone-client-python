@@ -7,7 +7,7 @@
 - [x] 6. wrap `/contacts/create-contact` → `openphone_sdk/create_contact.py`
 - [x] 7. wrap `/contacts/delete-contact` → `openphone_sdk/delete_contact.py`
 - [x] 8. wrap `/contacts/get-contact-by-id` → `openphone_sdk/get_contact_by_id.py`
-- [ ] 9. wrap `/contacts/list-contacts` → `openphone_sdk/list_contacts.py`
+- [x] 9. wrap `/contacts/list-contacts` → `openphone_sdk/list_contacts.py`
 - [x] 10. wrap `/contacts/update-contact-by-id` → `openphone_sdk/update_contact_by_id.py`
 - [x] 11. wrap `/conversations/list-conversations` → `openphone_sdk/list_conversations.py`
 - [x] 12. wrap `/messages/get-message-by-id` → `openphone_sdk/get_message_by_id.py`

@@ -6,6 +6,10 @@ from typing import Final
 
 from openphone_client import Client
 
+# NOTE: generated client exposes async helpers on ``Client`` itself, so
+# alias ``AsyncClient`` for upcoming wrappers expecting this name.
+AsyncClient = Client
+
 
 from openphone_client import AuthenticatedClient
 
@@ -32,10 +36,10 @@ def _sync_client() -> Client:
     return _sync
 
 
-def _async_client() -> Client:
+def _async_client() -> AsyncClient:
     global _async
     if _async is None:
-        _async = Client(base_url=BASE, headers={"X-API-KEY": _get_key()})
+        _async = AsyncClient(base_url=BASE, headers={"X-API-KEY": _get_key()})
     return _async
 
 

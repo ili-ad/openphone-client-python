@@ -12,6 +12,7 @@ _sync: Client | None = None
 _async: Client | None = None
 
 
+
 def _get_key() -> str:
     key = os.getenv("OPENPHONE_API_KEY", "").strip()
     if not key:
@@ -26,6 +27,8 @@ def _sync_client() -> Client:
     if _sync is None:
         _sync = Client(base_url=BASE, headers={"X-API-KEY": _get_key()})
     return _sync
+
+
 
 
 def _async_client() -> Client:

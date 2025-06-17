@@ -9,6 +9,8 @@ from openphone_client import Client
 BASE: Final[str] = os.getenv("OPENPHONE_BASE_URL", "https://api.openphone.com")
 
 _sync: Client | None = None
+_async: Client | None = None
+
 
 
 def _get_key() -> str:
@@ -27,9 +29,23 @@ def _sync_client() -> Client:
     return _sync
 
 
+
+
+def _async_client() -> Client:
+    global _async
+    if _async is None:
+        _async = Client(base_url=BASE, headers={"X-API-KEY": _get_key()})
+    return _async
+
+
 # Public helpers -------------------------------------------------------------
 
 
 def client() -> Client:
     """Shared synchronous client."""
     return _sync_client()
+
+
+def aclient() -> Client:
+    """Shared asynchronous client (for upcoming async wrappers)."""
+    return _async_client()

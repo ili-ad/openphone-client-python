@@ -24,6 +24,8 @@
 | `delete_webhook_by_id` | DELETE | `/v1/webhooks/{id}` |
 | `get_webhook_by_id` | GET | `/v1/webhooks/{id}` |
 
+Note: `since` is intentionally rejected in wrappers; use `created_after` / `created_before` instead.
+
 ## Experimental exports (not in pinned spec)
 | Wrapper | Method | Path |
 | --- | --- | --- |

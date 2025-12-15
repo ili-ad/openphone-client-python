@@ -27,12 +27,14 @@ def list_messages(
     if max_results < 1 or max_results > 100:
         raise ValueError("max_results must be between 1 and 100")
 
+    if since is not UNSET:
+        raise ValueError("since is deprecated and behaves incorrectly; use created_after/created_before")
+
     res = sync(
         client=client(),
         phone_number_id=phone_number_id,
         user_id=user_id,
         participants=participants,
-        since=since,
         created_after=created_after,
         created_before=created_before,
         max_results=max_results,

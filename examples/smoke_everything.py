@@ -49,7 +49,7 @@ since = now - timedelta(days=30)
 calls = list_calls(
     phone_number_id = PHONE_ID,
     participants    = [OTHER],          # ←  must specify at least one number
-    since           = since,
+    created_after   = since,
     max_results     = 5,
 )
 

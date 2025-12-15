@@ -21,6 +21,6 @@ def test_list_calls(httpx_mock):
         str(req.url)
         == "https://api.openphone.com/v1/calls?phoneNumberId=PN123&participants=%2B1555&maxResults=10"
     )
-    assert req.headers.get("X-API-KEY") == "k"
+    assert req.headers.get("Authorization") == "k"
     assert out.data == []
 

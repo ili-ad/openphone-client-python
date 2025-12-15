@@ -19,7 +19,7 @@ def test_list_messages(httpx_mock):
     req = httpx_mock.get_request()
     assert req.method == "GET"
     assert str(req.url).startswith("https://api.openphone.com/v1/messages")
-    assert req.headers.get("X-API-KEY") == "k"
+    assert req.headers.get("Authorization") == "k"
     params = req.url.params
     assert params["phoneNumberId"] == "PN1"
     assert params.get_list("participants") == ["+1555"]

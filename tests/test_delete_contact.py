@@ -18,5 +18,5 @@ def test_delete_contact(httpx_mock):
     req = httpx_mock.get_request()
     assert req.method == "DELETE"
     assert str(req.url) == "https://api.openphone.com/v1/contacts/AB123"
-    assert req.headers.get("X-API-KEY") == "k"
+    assert req.headers.get("Authorization") == "k"
     assert out is None

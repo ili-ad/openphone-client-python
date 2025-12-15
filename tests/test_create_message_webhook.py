@@ -52,7 +52,7 @@ def test_create_message_webhook(httpx_mock):
     req = httpx_mock.get_request()
     assert req.method == "POST"
     assert str(req.url) == "https://api.openphone.com/v1/webhooks/messages"
-    assert req.headers.get("X-API-KEY") == "k"
+    assert req.headers.get("Authorization") == "k"
     assert req.headers.get("Content-Type") == "application/json"
     import json
     assert json.loads(req.content.decode()) == body.to_dict()

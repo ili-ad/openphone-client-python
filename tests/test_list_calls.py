@@ -46,3 +46,20 @@ def test_list_calls_validates_max_results():
     with pytest.raises(ValueError):
         list_calls("PN123", ["+1555"], max_results=0)
 
+
+def test_list_calls_rejects_reversed_created_range():
+    os.environ["OPENPHONE_API_KEY"] = "k"
+    os.environ["OPENPHONE_BASE_URL"] = "https://api.openphone.com"
+
+    from datetime import datetime
+
+    from openphone_sdk.list_calls import list_calls
+
+    with pytest.raises(ValueError, match="created_after must be <= created_before"):
+        list_calls(
+            "PN123",
+            ["+1555"],
+            created_after=datetime(2024, 1, 2),
+            created_before=datetime(2024, 1, 1),
+        )
+

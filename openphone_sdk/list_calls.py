@@ -1,11 +1,10 @@
 from __future__ import annotations
 
-import datetime
-
 from openphone_client.api.calls.list_calls_v_1 import sync
 from openphone_client.models.list_calls_v1_response_200 import ListCallsV1Response200
 from openphone_client.types import UNSET, Unset
 from openphone_sdk.request import client
+from openphone_sdk.validate import validate_created_range
 
 
 def list_calls(
@@ -25,6 +24,7 @@ def list_calls(
         raise ValueError("participants must include at least one phone number")
     if max_results < 1 or max_results > 100:
         raise ValueError("max_results must be between 1 and 100")
+    validate_created_range(created_after, created_before)
 
     res = sync(
         client=client(),

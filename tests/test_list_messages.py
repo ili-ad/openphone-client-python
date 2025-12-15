@@ -47,3 +47,40 @@ def test_list_messages_validates_max_results():
 
     with pytest.raises(ValueError):
         list_messages("PN1", participants=["+1"], max_results=0)
+
+
+def test_list_messages_rejects_reversed_created_range():
+    os.environ["OPENPHONE_API_KEY"] = "k"
+    os.environ["OPENPHONE_BASE_URL"] = "https://api.openphone.com"
+
+    from datetime import datetime
+
+    from openphone_sdk.list_messages import list_messages
+
+    with pytest.raises(ValueError, match="created_after must be <= created_before"):
+        list_messages(
+            "PN1",
+            participants=["+1555"],
+            created_after=datetime(2024, 1, 2),
+            created_before=datetime(2024, 1, 1),
+        )
+
+
+def test_list_messages_rejects_mixed_timezone_datetimes():
+    os.environ["OPENPHONE_API_KEY"] = "k"
+    os.environ["OPENPHONE_BASE_URL"] = "https://api.openphone.com"
+
+    from datetime import datetime, timezone
+
+    from openphone_sdk.list_messages import list_messages
+
+    with pytest.raises(
+        ValueError,
+        match="created_after and created_before must be comparable datetimes",
+    ):
+        list_messages(
+            "PN1",
+            participants=["+1555"],
+            created_after=datetime(2024, 1, 1),
+            created_before=datetime(2024, 1, 2, tzinfo=timezone.utc),
+        )

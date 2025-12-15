@@ -4,6 +4,7 @@ from datetime import datetime
 from typing import Union
 
 from openphone_sdk.request import client
+from openphone_sdk.validate import validate_created_range
 from openphone_client.api.messages.list_messages_v_1 import sync
 from openphone_client.models.list_messages_v1_response_200 import ListMessagesV1Response200
 from openphone_client.types import UNSET, Unset
@@ -26,6 +27,7 @@ def list_messages(
         raise ValueError("participants must include at least one phone number")
     if max_results < 1 or max_results > 100:
         raise ValueError("max_results must be between 1 and 100")
+    validate_created_range(created_after, created_before)
 
     res = sync(
         client=client(),

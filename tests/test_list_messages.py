@@ -1,3 +1,4 @@
+import datetime
 import os
 import re
 
@@ -47,3 +48,13 @@ def test_list_messages_validates_max_results():
 
     with pytest.raises(ValueError):
         list_messages("PN1", participants=["+1"], max_results=0)
+
+
+def test_list_messages_rejects_since():
+    os.environ["OPENPHONE_API_KEY"] = "k"
+    os.environ["OPENPHONE_BASE_URL"] = "https://api.openphone.com"
+
+    from openphone_sdk.list_messages import list_messages
+
+    with pytest.raises(ValueError, match="since is deprecated"):
+        list_messages("PN1", participants=["+1555"], since=datetime.datetime.now())

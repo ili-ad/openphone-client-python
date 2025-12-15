@@ -1,3 +1,4 @@
+import datetime
 import os
 
 import pytest
@@ -45,4 +46,14 @@ def test_list_calls_validates_max_results():
 
     with pytest.raises(ValueError):
         list_calls("PN123", ["+1555"], max_results=0)
+
+
+def test_list_calls_rejects_since():
+    os.environ["OPENPHONE_API_KEY"] = "k"
+    os.environ["OPENPHONE_BASE_URL"] = "https://api.openphone.com"
+
+    from openphone_sdk.list_calls import list_calls
+
+    with pytest.raises(ValueError, match="since is deprecated"):
+        list_calls("PN123", ["+1555"], since=datetime.datetime.now())
 

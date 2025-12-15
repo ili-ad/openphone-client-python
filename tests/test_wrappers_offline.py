@@ -38,7 +38,7 @@ CASES: list[tuple[str, tuple[Any, ...], dict[str, Any], str, str, dict[str, Any]
     ("openphone_sdk.get_contact_custom_fields.get_contact_custom_fields", (), {},      "GET",  "/v1/contact-custom-fields",                      {"data": []}),
     # ----- phone numbers / calls ------------------------------------------------
     ("openphone_sdk.list_calls.list_calls",
-        ("PN_TEST", ["+12223334444"]), {"since": None},      "GET",  "/v1/calls?phoneNumberId=PN_TEST&participants=%2B12223334444&maxResults=10", {"data": []}),
+        ("PN_TEST", ["+12223334444"]), {},      "GET",  "/v1/calls?phoneNumberId=PN_TEST&participants=%2B12223334444&maxResults=10", {"data": []}),
     ("openphone_sdk.get_call_recordings.get_call_recordings",
         ("CA_TEST",),              {},                      "GET",  "/v1/call-recordings/CA_TEST",                 {"data": []}),
     ("openphone_sdk.get_call_summary.get_call_summary",

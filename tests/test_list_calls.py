@@ -57,3 +57,16 @@ def test_list_calls_rejects_since():
     with pytest.raises(ValueError, match="since is deprecated"):
         list_calls("PN123", ["+1555"], since=datetime.datetime.now())
 
+
+def test_list_calls_rejects_reversed_created_range():
+    os.environ["OPENPHONE_API_KEY"] = "k"
+    os.environ["OPENPHONE_BASE_URL"] = "https://api.openphone.com"
+
+    from openphone_sdk.list_calls import list_calls
+
+    earlier = datetime.datetime(2024, 1, 1)
+    later = datetime.datetime(2024, 2, 1)
+
+    with pytest.raises(ValueError, match="created_after must be <= created_before"):
+        list_calls("PN123", ["+1555"], created_after=later, created_before=earlier)
+

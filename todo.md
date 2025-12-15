@@ -21,6 +21,7 @@
 - [x] 20. wrap `/webhooks/delete-webhook-by-id` → `openphone_sdk/delete_webhook_by_id.py`
 - [x] 21. wrap `/webhooks/get-webhook-by-id` → `openphone_sdk/get_webhook_by_id.py`
 - [x] 22. wrap `/webhooks/list-webhooks` → `openphone_sdk/list_webhooks.py`
+- [x] Ticket 5B: validate created_after/created_before ordering in list_calls and list_messages
 
 
 ## Backlog – polish after first integration

@@ -12,7 +12,7 @@ def test_list_webhooks(httpx_mock):
         status_code=200,
     )
 
-    from openphone_sdk.list_webhooks import list_webhooks
+    from quo_sdk.list_webhooks import list_webhooks
 
     out = list_webhooks()
 

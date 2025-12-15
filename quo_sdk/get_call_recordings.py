@@ -1,6 +1,6 @@
-from openphone_sdk.request import client
-from openphone_client.api.calls.get_call_recordings_v_1 import sync
-from openphone_client.models.get_call_recordings_v1_response_200 import GetCallRecordingsV1Response200
+from quo_sdk.request import client
+from quo_client.api.calls.get_call_recordings_v_1 import sync
+from quo_client.models.get_call_recordings_v1_response_200 import GetCallRecordingsV1Response200
 
 
 def get_call_recordings(call_id: str) -> GetCallRecordingsV1Response200:

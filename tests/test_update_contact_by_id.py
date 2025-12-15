@@ -7,8 +7,8 @@ def test_update_contact_by_id(httpx_mock):
     os.environ["OPENPHONE_API_KEY"] = "k"
     os.environ["OPENPHONE_BASE_URL"] = "https://api.openphone.com"
 
-    from openphone_client.models.update_contact_by_id_v1_body import UpdateContactByIdV1Body
-    from openphone_client.models.update_contact_by_id_v1_body_default_fields import UpdateContactByIdV1BodyDefaultFields
+    from quo_client.models.update_contact_by_id_v1_body import UpdateContactByIdV1Body
+    from quo_client.models.update_contact_by_id_v1_body_default_fields import UpdateContactByIdV1BodyDefaultFields
 
     body = UpdateContactByIdV1Body(
         default_fields=UpdateContactByIdV1BodyDefaultFields(first_name="Alice")
@@ -40,7 +40,7 @@ def test_update_contact_by_id(httpx_mock):
         status_code=200,
     )
 
-    from openphone_sdk.update_contact_by_id import update_contact_by_id
+    from quo_sdk.update_contact_by_id import update_contact_by_id
 
     out = update_contact_by_id("123", body)
 

@@ -1,5 +1,5 @@
-from openphone_sdk.request import client
-from openphone_client.api.webhooks.delete_webhook_by_id_v_1 import sync
+from quo_sdk.request import client
+from quo_client.api.webhooks.delete_webhook_by_id_v_1 import sync
 
 
 def delete_webhook_by_id(webhook_id: str) -> None:

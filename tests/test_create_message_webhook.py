@@ -1,13 +1,13 @@
 import os
 import datetime
-from openphone_client.models.create_message_webhook_v1_body import CreateMessageWebhookV1Body
-from openphone_client.models.create_message_webhook_v1_body_events_item import CreateMessageWebhookV1BodyEventsItem
-from openphone_client.models.create_message_webhook_v1_response_201 import CreateMessageWebhookV1Response201
-from openphone_client.models.create_message_webhook_v1_response_201_data import CreateMessageWebhookV1Response201Data
-from openphone_client.models.create_message_webhook_v1_response_201_data_events_item import (
+from quo_client.models.create_message_webhook_v1_body import CreateMessageWebhookV1Body
+from quo_client.models.create_message_webhook_v1_body_events_item import CreateMessageWebhookV1BodyEventsItem
+from quo_client.models.create_message_webhook_v1_response_201 import CreateMessageWebhookV1Response201
+from quo_client.models.create_message_webhook_v1_response_201_data import CreateMessageWebhookV1Response201Data
+from quo_client.models.create_message_webhook_v1_response_201_data_events_item import (
     CreateMessageWebhookV1Response201DataEventsItem,
 )
-from openphone_client.models.create_message_webhook_v1_response_201_data_status import (
+from quo_client.models.create_message_webhook_v1_response_201_data_status import (
     CreateMessageWebhookV1Response201DataStatus,
 )
 
@@ -45,7 +45,7 @@ def test_create_message_webhook(httpx_mock):
         status_code=201,
     )
 
-    from openphone_sdk.create_message_webhook import create_message_webhook
+    from quo_sdk.create_message_webhook import create_message_webhook
 
     out = create_message_webhook(body)
 

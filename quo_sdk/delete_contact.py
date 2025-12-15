@@ -1,5 +1,5 @@
-from openphone_sdk.request import client
-from openphone_client.api.contacts.delete_contact_v_1 import sync
+from quo_sdk.request import client
+from quo_client.api.contacts.delete_contact_v_1 import sync
 
 
 def delete_contact(contact_id: str) -> None:

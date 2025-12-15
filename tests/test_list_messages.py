@@ -15,7 +15,7 @@ def test_list_messages(httpx_mock):
         status_code=200,
     )
 
-    from openphone_sdk.list_messages import list_messages
+    from quo_sdk.list_messages import list_messages
 
     out = list_messages("PN1", participants=["+1555"], max_results=5)
 
@@ -34,7 +34,7 @@ def test_list_messages_rejects_empty_participants():
     os.environ["OPENPHONE_API_KEY"] = "k"
     os.environ["OPENPHONE_BASE_URL"] = "https://api.openphone.com"
 
-    from openphone_sdk.list_messages import list_messages
+    from quo_sdk.list_messages import list_messages
 
     with pytest.raises(ValueError):
         list_messages("PN1", participants=[])
@@ -44,7 +44,7 @@ def test_list_messages_validates_max_results():
     os.environ["OPENPHONE_API_KEY"] = "k"
     os.environ["OPENPHONE_BASE_URL"] = "https://api.openphone.com"
 
-    from openphone_sdk.list_messages import list_messages
+    from quo_sdk.list_messages import list_messages
 
     with pytest.raises(ValueError):
         list_messages("PN1", participants=["+1"], max_results=0)
@@ -54,7 +54,7 @@ def test_list_messages_rejects_since():
     os.environ["OPENPHONE_API_KEY"] = "k"
     os.environ["OPENPHONE_BASE_URL"] = "https://api.openphone.com"
 
-    from openphone_sdk.list_messages import list_messages
+    from quo_sdk.list_messages import list_messages
 
     with pytest.raises(ValueError, match="since is deprecated"):
         list_messages("PN1", participants=["+1555"], since=datetime.datetime.now())
@@ -64,7 +64,7 @@ def test_list_messages_rejects_reversed_created_range():
     os.environ["OPENPHONE_API_KEY"] = "k"
     os.environ["OPENPHONE_BASE_URL"] = "https://api.openphone.com"
 
-    from openphone_sdk.list_messages import list_messages
+    from quo_sdk.list_messages import list_messages
 
     earlier = datetime.datetime(2024, 1, 1)
     later = datetime.datetime(2024, 3, 1)
@@ -77,7 +77,7 @@ def test_list_messages_rejects_naive_and_aware_mix():
     os.environ["OPENPHONE_API_KEY"] = "k"
     os.environ["OPENPHONE_BASE_URL"] = "https://api.openphone.com"
 
-    from openphone_sdk.list_messages import list_messages
+    from quo_sdk.list_messages import list_messages
 
     naive = datetime.datetime(2024, 1, 1)
     aware = datetime.datetime(2024, 1, 2, tzinfo=datetime.timezone.utc)

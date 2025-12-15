@@ -12,7 +12,7 @@ def test_get_call_recordings(httpx_mock):
         status_code=200,
     )
 
-    from openphone_sdk.get_call_recordings import get_call_recordings
+    from quo_sdk.get_call_recordings import get_call_recordings
 
     out = get_call_recordings("AC123")
 

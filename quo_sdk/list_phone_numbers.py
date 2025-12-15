@@ -1,7 +1,7 @@
-from openphone_sdk.request import client
-from openphone_client.api.phone_numbers.list_phone_numbers_v_1 import sync
-from openphone_client.types import UNSET
-from openphone_client.models.list_phone_numbers_response import ListPhoneNumbersResponse
+from quo_sdk.request import client
+from quo_client.api.phone_numbers.list_phone_numbers_v_1 import sync
+from quo_client.types import UNSET
+from quo_client.models.list_phone_numbers_response import ListPhoneNumbersResponse
 
 
 def list_phone_numbers(user_id: str | None = None) -> ListPhoneNumbersResponse:

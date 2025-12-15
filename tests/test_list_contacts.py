@@ -11,7 +11,7 @@ def test_list_contacts(httpx_mock):
         status_code=200,
     )
 
-    from openphone_sdk.experimental import list_contacts
+    from quo_sdk.experimental import list_contacts
 
     out = list_contacts(external_ids=["123"])
 

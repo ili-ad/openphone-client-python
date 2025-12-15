@@ -2,11 +2,11 @@ import os
 import json
 import datetime
 
-from openphone_client.models.create_contact_v1_body import CreateContactV1Body
-from openphone_client.models.create_contact_v1_body_default_fields import CreateContactV1BodyDefaultFields
-from openphone_client.models.create_contact_v1_response_201 import CreateContactV1Response201
-from openphone_client.models.create_contact_v1_response_201_data import CreateContactV1Response201Data
-from openphone_client.models.create_contact_v1_response_201_data_default_fields import CreateContactV1Response201DataDefaultFields
+from quo_client.models.create_contact_v1_body import CreateContactV1Body
+from quo_client.models.create_contact_v1_body_default_fields import CreateContactV1BodyDefaultFields
+from quo_client.models.create_contact_v1_response_201 import CreateContactV1Response201
+from quo_client.models.create_contact_v1_response_201_data import CreateContactV1Response201Data
+from quo_client.models.create_contact_v1_response_201_data_default_fields import CreateContactV1Response201DataDefaultFields
 
 
 def test_create_contact(httpx_mock):
@@ -45,7 +45,7 @@ def test_create_contact(httpx_mock):
         status_code=201,
     )
 
-    from openphone_sdk.create_contact import create_contact
+    from quo_sdk.create_contact import create_contact
 
     out = create_contact(body)
 

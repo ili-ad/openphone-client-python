@@ -1,7 +1,7 @@
-from openphone_sdk.request import client
-from openphone_client.api.contacts.update_contact_by_id_v_1 import sync
-from openphone_client.models.update_contact_by_id_v1_body import UpdateContactByIdV1Body
-from openphone_client.models.update_contact_by_id_v1_response_200 import UpdateContactByIdV1Response200
+from quo_sdk.request import client
+from quo_client.api.contacts.update_contact_by_id_v_1 import sync
+from quo_client.models.update_contact_by_id_v1_body import UpdateContactByIdV1Body
+from quo_client.models.update_contact_by_id_v1_response_200 import UpdateContactByIdV1Response200
 
 
 def update_contact_by_id(contact_id: str, body: UpdateContactByIdV1Body) -> UpdateContactByIdV1Response200:

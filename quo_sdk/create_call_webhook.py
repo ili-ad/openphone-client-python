@@ -1,7 +1,7 @@
-from openphone_sdk.request import client
-from openphone_client.api.webhooks.create_call_webhook_v_1 import sync
-from openphone_client.models.create_call_webhook_v1_body import CreateCallWebhookV1Body
-from openphone_client.models.create_call_webhook_v1_response_201 import CreateCallWebhookV1Response201
+from quo_sdk.request import client
+from quo_client.api.webhooks.create_call_webhook_v_1 import sync
+from quo_client.models.create_call_webhook_v1_body import CreateCallWebhookV1Body
+from quo_client.models.create_call_webhook_v1_response_201 import CreateCallWebhookV1Response201
 
 
 def create_call_webhook(body: CreateCallWebhookV1Body) -> CreateCallWebhookV1Response201:

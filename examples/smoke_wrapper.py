@@ -8,9 +8,9 @@ Quick sanity-check that uses *your* wrappers, not raw httpx.
 """
 
 import datetime, os, pytz
-from   openphone_sdk.list_phone_numbers import list_phone_numbers
-from   openphone_sdk.list_calls        import list_calls
-from   openphone_sdk.list_messages     import list_messages
+from   quo_sdk.list_phone_numbers import list_phone_numbers
+from   quo_sdk.list_calls        import list_calls
+from   quo_sdk.list_messages     import list_messages
 
 
 # ---------------------------------------------------------------------------

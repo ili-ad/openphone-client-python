@@ -1,26 +1,27 @@
 from __future__ import annotations
 
-import datetime
+from datetime import datetime
+from typing import Union
 
-from openphone_client.api.calls.list_calls_v_1 import sync
-from openphone_client.models.list_calls_v1_response_200 import ListCallsV1Response200
-from openphone_client.types import UNSET, Unset
-from openphone_sdk.request import client
-from openphone_sdk.validate import validate_created_range
+from quo_sdk.request import client
+from quo_client.api.messages.list_messages_v_1 import sync
+from quo_client.models.list_messages_v1_response_200 import ListMessagesV1Response200
+from quo_client.types import UNSET, Unset
+from quo_sdk.validate import validate_created_range
 
 
-def list_calls(
+def list_messages(
     phone_number_id: str,
     participants: list[str],
     *,
-    user_id: Unset | str = UNSET,
-    since: Unset | datetime.datetime = UNSET,
-    created_after: Unset | datetime.datetime = UNSET,
-    created_before: Unset | datetime.datetime = UNSET,
+    user_id: Union[Unset, str] = UNSET,
+    since: Union[Unset, datetime] = UNSET,
+    created_after: Union[Unset, datetime] = UNSET,
+    created_before: Union[Unset, datetime] = UNSET,
     max_results: int = 10,
-    page_token: Unset | str = UNSET,
-) -> ListCallsV1Response200:
-    """Return list of calls or raise RuntimeError on non-200."""
+    page_token: Union[Unset, str] = UNSET,
+) -> ListMessagesV1Response200:
+    """Return messages matching filters or raise RuntimeError on non-200."""
 
     if not participants:
         raise ValueError("participants must include at least one phone number")
@@ -42,6 +43,6 @@ def list_calls(
         max_results=max_results,
         page_token=page_token,
     )
-    if isinstance(res, ListCallsV1Response200):
+    if isinstance(res, ListMessagesV1Response200):
         return res
     raise RuntimeError(f"Unexpected response {type(res).__name__}")

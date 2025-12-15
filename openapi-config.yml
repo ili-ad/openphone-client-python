@@ -1,2 +1,2 @@
-package_name_override: openphone_client
-project_name_override: openphone-client
+package_name_override: quo_client
+project_name_override: quo-client

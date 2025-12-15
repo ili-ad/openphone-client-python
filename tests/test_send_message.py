@@ -3,7 +3,7 @@ import os
 import pytest
 from httpx import Response
 
-from openphone_client.models.send_message_v1_body import SendMessageV1Body
+from quo_client.models.send_message_v1_body import SendMessageV1Body
 
 
 def test_send_message(httpx_mock):
@@ -29,7 +29,7 @@ def test_send_message(httpx_mock):
         status_code=202,
     )
 
-    from openphone_sdk.send_message import send_message
+    from quo_sdk.send_message import send_message
 
     body = SendMessageV1Body(content="hi", from_="+1555", to=["+123"])
     out = send_message(body)
@@ -48,7 +48,7 @@ def test_send_message_requires_single_recipient():
     os.environ["OPENPHONE_API_KEY"] = "k"
     os.environ["OPENPHONE_BASE_URL"] = "https://api.openphone.com"
 
-    from openphone_sdk.send_message import send_message
+    from quo_sdk.send_message import send_message
 
     with pytest.raises(ValueError):
         send_message(SendMessageV1Body(content="hi", from_="+1555", to=[]))

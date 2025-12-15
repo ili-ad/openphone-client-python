@@ -15,13 +15,13 @@ import os
 from datetime import datetime, timedelta, timezone
 from pprint import pp
 
-from openphone_sdk import (
+from quo_sdk import (
     list_phone_numbers,
     list_calls,
     list_messages,
     get_call_recordings,
 )
-from openphone_sdk.experimental import list_conversations
+from quo_sdk.experimental import list_conversations
 
 # ── 0. ENV CHECK ────────────────────────────────────────────────────────────
 KEY = os.getenv("OPENPHONE_API_KEY")

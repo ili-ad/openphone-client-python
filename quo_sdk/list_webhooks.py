@@ -1,7 +1,7 @@
-from openphone_sdk.request import client
-from openphone_client.api.webhooks.list_webhooks_v_1 import sync
-from openphone_client.models.list_webhooks_v1_response_200 import ListWebhooksV1Response200
-from openphone_client.types import UNSET
+from quo_sdk.request import client
+from quo_client.api.webhooks.list_webhooks_v_1 import sync
+from quo_client.models.list_webhooks_v1_response_200 import ListWebhooksV1Response200
+from quo_client.types import UNSET
 
 
 def list_webhooks(user_id: str | None = None) -> ListWebhooksV1Response200:

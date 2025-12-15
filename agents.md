@@ -16,7 +16,7 @@ Find the corresponding indicated item from the prompt in **todo.md** and:
 
 ## Testing
 * Use **pytest-httpx** (`httpx_mock`) to stub requests.
-* Verify URL, method, `X-API-KEY` header, and any JSON body.
+* Verify URL, method, `Authorization` header, and any JSON body.
 * Tests must pass with `pytest -q`.
 
 ## CI expectation

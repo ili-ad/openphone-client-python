@@ -27,5 +27,5 @@ def test_get_call_summary(httpx_mock):
     req = httpx_mock.get_request()
     assert req.method == "GET"
     assert str(req.url) == "https://api.openphone.com/v1/call-summaries/AC123"
-    assert req.headers.get("X-API-KEY") == "k"
+    assert req.headers.get("Authorization") == "k"
     assert out.data.call_id == "AC123"

@@ -43,7 +43,7 @@ def test_create_call_transcript_webhook(httpx_mock):
     req = httpx_mock.get_request()
     assert req.method == "POST"
     assert str(req.url) == "https://api.openphone.com/v1/webhooks/call-transcripts"
-    assert req.headers.get("X-API-KEY") == "k"
+    assert req.headers.get("Authorization") == "k"
     body_json = json.loads(req.content.decode())
     assert body_json == {"events": ["call.transcript.completed"], "url": "https://example.com"}
     assert out.data.id == "wh_1"

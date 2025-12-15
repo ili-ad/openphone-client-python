@@ -1,6 +1,6 @@
 """
 Read-only sanity checks against the live OpenPhone API.
-Requires the env-var OPENPHONE_API_KEY to be set.
+Requires QUO_API_KEY (or OPENPHONE_API_KEY) to be set.
 Nothing here sends a message or generates carrier fees.
 """
 
@@ -33,7 +33,7 @@ def _when(iso: str | None) -> str:
 # 0) show the key prefix so we’re certain the env is picked up
 # --------------------------------------------------------------------------- #
 
-key = os.getenv("OPENPHONE_API_KEY")
+key = os.getenv("QUO_API_KEY") or os.getenv("OPENPHONE_API_KEY")
 print("⟹ using key :", (key[:8] + "…") if key else None)
 
 # --------------------------------------------------------------------------- #

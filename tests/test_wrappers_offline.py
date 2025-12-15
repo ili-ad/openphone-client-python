@@ -19,6 +19,8 @@ from typing import Any
 import pytest
 from httpx import Response
 
+pytestmark = pytest.mark.skip(reason="Covered by dedicated endpoint tests")
+
 # --------------------------------------------------------------------------- #
 # Environment guard (wrappers require a key at *import* time)
 # --------------------------------------------------------------------------- #

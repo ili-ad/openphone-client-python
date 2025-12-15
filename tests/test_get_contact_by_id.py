@@ -38,5 +38,5 @@ def test_get_contact_by_id(httpx_mock):
     req = httpx_mock.get_request()
     assert req.method == "GET"
     assert str(req.url) == "https://api.openphone.com/v1/contacts/C123"
-    assert req.headers.get("X-API-KEY") == "k"
+    assert req.headers.get("Authorization") == "k"
     assert out.data.id == "C123"

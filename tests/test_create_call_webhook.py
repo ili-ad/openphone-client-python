@@ -41,7 +41,7 @@ def test_create_call_webhook(httpx_mock):
     req = httpx_mock.get_request()
     assert req.method == "POST"
     assert str(req.url) == "https://api.openphone.com/v1/webhooks/calls"
-    assert req.headers.get("X-API-KEY") == "k"
+    assert req.headers.get("Authorization") == "k"
 
     import json
 

@@ -47,6 +47,6 @@ def test_update_contact_by_id(httpx_mock):
     req = httpx_mock.get_request()
     assert req.method == "PATCH"
     assert str(req.url) == "https://api.openphone.com/v1/contacts/123"
-    assert req.headers.get("X-API-KEY") == "k"
+    assert req.headers.get("Authorization") == "k"
     assert json.loads(req.content) == body.to_dict()
     assert out.data.id == "123"

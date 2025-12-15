@@ -1,6 +1,8 @@
 import os
 import re
 
+import pytest
+
 
 def test_list_messages(httpx_mock):
     os.environ["OPENPHONE_API_KEY"] = "k"
@@ -25,3 +27,23 @@ def test_list_messages(httpx_mock):
     assert params.get_list("participants") == ["+1555"]
     assert params["maxResults"] == "5"
     assert out.data == []
+
+
+def test_list_messages_rejects_empty_participants():
+    os.environ["OPENPHONE_API_KEY"] = "k"
+    os.environ["OPENPHONE_BASE_URL"] = "https://api.openphone.com"
+
+    from openphone_sdk.list_messages import list_messages
+
+    with pytest.raises(ValueError):
+        list_messages("PN1", participants=[])
+
+
+def test_list_messages_validates_max_results():
+    os.environ["OPENPHONE_API_KEY"] = "k"
+    os.environ["OPENPHONE_BASE_URL"] = "https://api.openphone.com"
+
+    from openphone_sdk.list_messages import list_messages
+
+    with pytest.raises(ValueError):
+        list_messages("PN1", participants=["+1"], max_results=0)

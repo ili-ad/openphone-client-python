@@ -12,7 +12,7 @@ def test_list_conversations(httpx_mock):
         status_code=200,
     )
 
-    from openphone_sdk.list_conversations import list_conversations
+    from openphone_sdk.experimental import list_conversations
 
     out = list_conversations()
 

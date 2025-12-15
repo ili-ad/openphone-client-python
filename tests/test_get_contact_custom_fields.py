@@ -12,7 +12,7 @@ def test_get_contact_custom_fields(httpx_mock):
         status_code=200,
     )
 
-    from openphone_sdk.get_contact_custom_fields import get_contact_custom_fields
+    from quo_sdk.get_contact_custom_fields import get_contact_custom_fields
 
     out = get_contact_custom_fields()
 

@@ -20,7 +20,7 @@ def test_get_call_transcript(httpx_mock):
         status_code=200,
     )
 
-    from openphone_sdk.get_call_transcript import get_call_transcript
+    from quo_sdk.get_call_transcript import get_call_transcript
 
     out = get_call_transcript("AC123")
 

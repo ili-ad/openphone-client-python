@@ -11,7 +11,7 @@ def test_delete_contact(httpx_mock):
         status_code=204,
     )
 
-    from openphone_sdk.delete_contact import delete_contact
+    from quo_sdk.delete_contact import delete_contact
 
     out = delete_contact("AB123")
 

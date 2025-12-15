@@ -1,7 +1,7 @@
 import os
 from httpx import Response
 
-from openphone_client.models.create_call_summary_webhook_v1_body import (
+from quo_client.models.create_call_summary_webhook_v1_body import (
     CreateCallSummaryWebhookV1Body,
     CreateCallSummaryWebhookV1BodyEventsItem,
 )
@@ -38,7 +38,7 @@ def test_create_call_summary_webhook(httpx_mock):
         status_code=201,
     )
 
-    from openphone_sdk.create_call_summary_webhook import create_call_summary_webhook
+    from quo_sdk.create_call_summary_webhook import create_call_summary_webhook
 
     out = create_call_summary_webhook(body)
 

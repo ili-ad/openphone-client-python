@@ -12,6 +12,6 @@ def test_get_recordings(httpx_mock):
         status_code=200,
     )
 
-    from openphone_sdk.call_recordings_by_id import get_call_recordings
+    from quo_sdk.call_recordings_by_id import get_call_recordings
     out = get_call_recordings("123")
     assert out.data == []

@@ -25,7 +25,7 @@ def test_get_message_by_id(httpx_mock):
         status_code=200,
     )
 
-    from openphone_sdk.get_message_by_id import get_message_by_id
+    from quo_sdk.get_message_by_id import get_message_by_id
 
     out = get_message_by_id("MSG123")
 

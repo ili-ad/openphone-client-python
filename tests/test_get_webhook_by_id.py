@@ -27,7 +27,7 @@ def test_get_webhook_by_id(httpx_mock):
         status_code=200,
     )
 
-    from openphone_sdk.get_webhook_by_id import get_webhook_by_id
+    from quo_sdk.get_webhook_by_id import get_webhook_by_id
 
     out = get_webhook_by_id("WH123")
 

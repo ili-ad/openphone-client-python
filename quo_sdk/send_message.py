@@ -1,7 +1,7 @@
-from openphone_sdk.request import client
-from openphone_client.api.messages.send_message_v_1 import sync
-from openphone_client.models.send_message_v1_body import SendMessageV1Body
-from openphone_client.models.send_message_v1_response_202 import SendMessageV1Response202
+from quo_sdk.request import client
+from quo_client.api.messages.send_message_v_1 import sync
+from quo_client.models.send_message_v1_body import SendMessageV1Body
+from quo_client.models.send_message_v1_response_202 import SendMessageV1Response202
 
 
 def send_message(body: SendMessageV1Body) -> SendMessageV1Response202:

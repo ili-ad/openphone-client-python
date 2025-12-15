@@ -1,7 +1,7 @@
-from openphone_sdk.request import client
-from openphone_client.api.contacts.create_contact_v_1 import sync
-from openphone_client.models.create_contact_v1_body import CreateContactV1Body
-from openphone_client.models.create_contact_v1_response_201 import CreateContactV1Response201
+from quo_sdk.request import client
+from quo_client.api.contacts.create_contact_v_1 import sync
+from quo_client.models.create_contact_v1_body import CreateContactV1Body
+from quo_client.models.create_contact_v1_response_201 import CreateContactV1Response201
 
 
 def create_contact(body: CreateContactV1Body) -> CreateContactV1Response201:

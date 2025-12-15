@@ -31,7 +31,7 @@ def test_get_contact_by_id(httpx_mock):
         status_code=200,
     )
 
-    from openphone_sdk.get_contact_by_id import get_contact_by_id
+    from quo_sdk.get_contact_by_id import get_contact_by_id
 
     out = get_contact_by_id("C123")
 

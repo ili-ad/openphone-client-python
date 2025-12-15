@@ -3,10 +3,10 @@ from __future__ import annotations
 import datetime
 from typing import List, Optional
 
-from openphone_sdk.request import client
-from openphone_client.api.conversations.list_conversations_v_1 import sync
-from openphone_client.models.list_conversations_v1_response_200 import ListConversationsV1Response200
-from openphone_client.types import UNSET
+from quo_sdk.request import client
+from quo_client.api.conversations.list_conversations_v_1 import sync
+from quo_client.models.list_conversations_v1_response_200 import ListConversationsV1Response200
+from quo_client.types import UNSET
 
 
 def list_conversations(

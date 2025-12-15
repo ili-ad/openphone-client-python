@@ -3,7 +3,7 @@ from __future__ import annotations
 import os
 
 import httpx
-from openphone_client import Client
+from quo_client import Client
 
 BASE_URL = (
     os.getenv("QUO_BASE_URL")

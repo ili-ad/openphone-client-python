@@ -11,7 +11,7 @@ import pprint
 from datetime import datetime, timedelta, timezone
 
 import httpx
-from openphone_sdk.request import httpx_client
+from quo_sdk.request import httpx_client
 
 # --------------------------------------------------------------------------- #
 # helpers

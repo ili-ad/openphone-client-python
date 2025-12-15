@@ -1,5 +1,5 @@
 """
-End-to-end contract test for *all* thin wrappers in openphone_sdk.
+End-to-end contract test for *all* thin wrappers in quo_sdk.
 
 The table below drives a @pytest.mark.parametrize:
     – wrapper  : dotted-path to the call-helper
@@ -28,54 +28,54 @@ os.environ.setdefault("OPENPHONE_API_KEY", "test_key")
 os.environ.setdefault("OPENPHONE_BASE_URL", "https://api.openphone.com")
 
 # --------------------------------------------------------------------------- #
-# Param-table covering every file in openphone_sdk
+# Param-table covering every file in quo_sdk
 # Only “happy-path” 200 cases are asserted – error branches are unit-tested
 # individually in their own files.
 # --------------------------------------------------------------------------- #
 CASES: list[tuple[str, tuple[Any, ...], dict[str, Any], str, str, dict[str, Any]]] = [
     # dotted-wrapper-path,        args,                    kwargs,  HTTP,  /url,                                   mocked-JSON
-    ("openphone_sdk.list_phone_numbers.list_phone_numbers", (),               {},      "GET",  "/v1/phone-numbers",                              {"data": []}),
-    ("openphone_sdk.get_contact_custom_fields.get_contact_custom_fields", (), {},      "GET",  "/v1/contact-custom-fields",                      {"data": []}),
+    ("quo_sdk.list_phone_numbers.list_phone_numbers", (),               {},      "GET",  "/v1/phone-numbers",                              {"data": []}),
+    ("quo_sdk.get_contact_custom_fields.get_contact_custom_fields", (), {},      "GET",  "/v1/contact-custom-fields",                      {"data": []}),
     # ----- phone numbers / calls ------------------------------------------------
-    ("openphone_sdk.list_calls.list_calls",
+    ("quo_sdk.list_calls.list_calls",
         ("PN_TEST", ["+12223334444"]), {},      "GET",  "/v1/calls?phoneNumberId=PN_TEST&participants=%2B12223334444&maxResults=10", {"data": []}),
-    ("openphone_sdk.get_call_recordings.get_call_recordings",
+    ("quo_sdk.get_call_recordings.get_call_recordings",
         ("CA_TEST",),              {},                      "GET",  "/v1/call-recordings/CA_TEST",                 {"data": []}),
-    ("openphone_sdk.get_call_summary.get_call_summary",
+    ("quo_sdk.get_call_summary.get_call_summary",
         ("CA_TEST",),              {},                      "GET",  "/v1/call-summaries/CA_TEST",                  {"data": {}}),
-    ("openphone_sdk.get_call_transcript.get_call_transcript",
+    ("quo_sdk.get_call_transcript.get_call_transcript",
         ("CA_TEST",),              {},                      "GET",  "/v1/call-transcripts/CA_TEST",                {"data": {}}),
-    ("openphone_sdk.calls.calls",
+    ("quo_sdk.calls.calls",
         (),                        {},                      "POST", "/v1/calls",                                   {"data": {}}),  # placeholder - adjust if wrapper differs
     # ----- contacts -------------------------------------------------------------
-    ("openphone_sdk.list_contacts.list_contacts",          (),        {},      "GET",  "/v1/contacts",                                   {"data": []}),
-    ("openphone_sdk.get_contact_by_id.get_contact_by_id",  ("CT_ID",),{},      "GET",  "/v1/contacts/CT_ID",                             {"data": {}}),
-    ("openphone_sdk.create_contact.create_contact",
+    ("quo_sdk.list_contacts.list_contacts",          (),        {},      "GET",  "/v1/contacts",                                   {"data": []}),
+    ("quo_sdk.get_contact_by_id.get_contact_by_id",  ("CT_ID",),{},      "GET",  "/v1/contacts/CT_ID",                             {"data": {}}),
+    ("quo_sdk.create_contact.create_contact",
         (),                        {"body": {}},            "POST", "/v1/contacts",                                 {"data": {}}),
-    ("openphone_sdk.update_contact_by_id.update_contact_by_id",
+    ("quo_sdk.update_contact_by_id.update_contact_by_id",
         ("CT_ID",),                {"body": {}},            "PATCH","/v1/contacts/CT_ID",                           {"data": {}}),
-    ("openphone_sdk.delete_contact.delete_contact",
+    ("quo_sdk.delete_contact.delete_contact",
         ("CT_ID",),                {},                      "DELETE","/v1/contacts/CT_ID",                           {}),
     # ----- messages -------------------------------------------------------------
-    ("openphone_sdk.list_messages.list_messages",
+    ("quo_sdk.list_messages.list_messages",
         ("PN_TEST",),              {"participants": []},    "GET",  "/v1/messages?phoneNumberId=PN_TEST&maxResults=10", {"data": []}),
-    ("openphone_sdk.get_message_by_id.get_message_by_id",
+    ("quo_sdk.get_message_by_id.get_message_by_id",
         ("MSG_ID",),               {},                      "GET",  "/v1/messages/MSG_ID",                          {"data": {}}),
-    ("openphone_sdk.send_message.send_message",
+    ("quo_sdk.send_message.send_message",
         (),                        {"body": {}},            "POST", "/v1/messages",                                 {"data": {}}),
     # ----- webhooks -------------------------------------------------------------
-    ("openphone_sdk.list_webhooks.list_webhooks",          (),        {},      "GET",  "/v1/webhooks",                                  {"data": []}),
-    ("openphone_sdk.create_call_webhook.create_call_webhook",
+    ("quo_sdk.list_webhooks.list_webhooks",          (),        {},      "GET",  "/v1/webhooks",                                  {"data": []}),
+    ("quo_sdk.create_call_webhook.create_call_webhook",
         (),                        {"body": {}},            "POST", "/v1/webhooks/calls",                           {"data": {}}),
-    ("openphone_sdk.create_call_summary_webhook.create_call_summary_webhook",
+    ("quo_sdk.create_call_summary_webhook.create_call_summary_webhook",
         (),                        {"body": {}},            "POST", "/v1/webhooks/call-summaries",                 {"data": {}}),
-    ("openphone_sdk.create_call_transcript_webhook.create_call_transcript_webhook",
+    ("quo_sdk.create_call_transcript_webhook.create_call_transcript_webhook",
         (),                        {"body": {}},            "POST", "/v1/webhooks/call-transcripts",               {"data": {}}),
-    ("openphone_sdk.create_message_webhook.create_message_webhook",
+    ("quo_sdk.create_message_webhook.create_message_webhook",
         (),                        {"body": {}},            "POST", "/v1/webhooks/messages",                       {"data": {}}),
-    ("openphone_sdk.get_webhook_by_id.get_webhook_by_id",
+    ("quo_sdk.get_webhook_by_id.get_webhook_by_id",
         ("WH_ID",),                {},                      "GET",  "/v1/webhooks/WH_ID",                           {"data": {}}),
-    ("openphone_sdk.delete_webhook_by_id.delete_webhook_by_id",
+    ("quo_sdk.delete_webhook_by_id.delete_webhook_by_id",
         ("WH_ID",),                {},                      "DELETE","/v1/webhooks/WH_ID",                           {}),
 ]
 

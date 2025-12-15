@@ -1,3 +1,3 @@
 ## Unreleased
 ### Added
-- Python wrapper scaffold (`openphone_sdk`) and first endpoint **get_call_recordings**
+- Python wrapper scaffold (`quo_sdk`) and first endpoint **get_call_recordings**

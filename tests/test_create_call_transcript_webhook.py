@@ -27,11 +27,11 @@ def test_create_call_transcript_webhook(httpx_mock):
         status_code=201,
     )
 
-    from openphone_client.models.create_call_transcript_webhook_v1_body import (
+    from quo_client.models.create_call_transcript_webhook_v1_body import (
         CreateCallTranscriptWebhookV1Body,
         CreateCallTranscriptWebhookV1BodyEventsItem,
     )
-    from openphone_sdk.create_call_transcript_webhook import create_call_transcript_webhook
+    from quo_sdk.create_call_transcript_webhook import create_call_transcript_webhook
 
     body = CreateCallTranscriptWebhookV1Body(
         events=[CreateCallTranscriptWebhookV1BodyEventsItem.CALL_TRANSCRIPT_COMPLETED],

@@ -1,14 +1,14 @@
 [tool.poetry]
-name = "openphone-client"
-version = "1.0.0"
-description = "A client library for accessing OpenPhone Public API"
+name = "quo-client"
+version = "2.0.0"
+description = "A client library for accessing Quo (OpenPhone) Public API"
 authors = []
 readme = "README.md"
 packages = [
-    {include = "openphone_client"},
-    { include = "openphone_sdk" },
+    {include = "quo_client"},
+    { include = "quo_sdk" },
 ]
-include = ["CHANGELOG.md", "openphone_client/py.typed"]
+include = ["CHANGELOG.md", "quo_client/py.typed"]
 
 
 # ─── dependencies ──────────────────────────────────────────────

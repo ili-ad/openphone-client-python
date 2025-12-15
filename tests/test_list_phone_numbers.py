@@ -12,7 +12,7 @@ def test_list_phone_numbers(httpx_mock):
         status_code=200,
     )
 
-    from openphone_sdk.list_phone_numbers import list_phone_numbers
+    from quo_sdk.list_phone_numbers import list_phone_numbers
 
     out = list_phone_numbers("USR1")
 

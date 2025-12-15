@@ -11,7 +11,7 @@ def test_delete_webhook_by_id(httpx_mock):
         status_code=204,
     )
 
-    from openphone_sdk.delete_webhook_by_id import delete_webhook_by_id
+    from quo_sdk.delete_webhook_by_id import delete_webhook_by_id
 
     out = delete_webhook_by_id("WH123")
 

@@ -1,7 +1,7 @@
 import os
 
-from openphone_client.models.create_call_webhook_v1_body import CreateCallWebhookV1Body
-from openphone_client.models.create_call_webhook_v1_body_events_item import CreateCallWebhookV1BodyEventsItem
+from quo_client.models.create_call_webhook_v1_body import CreateCallWebhookV1Body
+from quo_client.models.create_call_webhook_v1_body_events_item import CreateCallWebhookV1BodyEventsItem
 
 
 def test_create_call_webhook(httpx_mock):
@@ -29,7 +29,7 @@ def test_create_call_webhook(httpx_mock):
         status_code=201,
     )
 
-    from openphone_sdk.create_call_webhook import create_call_webhook
+    from quo_sdk.create_call_webhook import create_call_webhook
 
     body = CreateCallWebhookV1Body(
         url="https://example.com",

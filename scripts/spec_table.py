@@ -67,9 +67,13 @@ def build_table(spec: dict) -> str:
     return "\n".join([*header, *rows]) + "\n"
 
 
+def generate_endpoints_markdown(spec_path: Path) -> str:
+    spec = json.loads(spec_path.read_text())
+    return build_table(spec)
+
+
 def main() -> None:
-    spec = json.loads(SPEC_PATH.read_text())
-    content = build_table(spec)
+    content = generate_endpoints_markdown(SPEC_PATH)
     OUTPUT_PATH.write_text(content)
     print(f"Wrote {OUTPUT_PATH.relative_to(ROOT)}")
 

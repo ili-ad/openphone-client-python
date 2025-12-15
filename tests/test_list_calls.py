@@ -1,5 +1,7 @@
 import os
 
+import pytest
+
 
 def test_list_calls(httpx_mock):
     os.environ["OPENPHONE_API_KEY"] = "k"
@@ -23,4 +25,24 @@ def test_list_calls(httpx_mock):
     )
     assert req.headers.get("Authorization") == "k"
     assert out.data == []
+
+
+def test_list_calls_rejects_empty_participants():
+    os.environ["OPENPHONE_API_KEY"] = "k"
+    os.environ["OPENPHONE_BASE_URL"] = "https://api.openphone.com"
+
+    from openphone_sdk.list_calls import list_calls
+
+    with pytest.raises(ValueError):
+        list_calls("PN123", [])
+
+
+def test_list_calls_validates_max_results():
+    os.environ["OPENPHONE_API_KEY"] = "k"
+    os.environ["OPENPHONE_BASE_URL"] = "https://api.openphone.com"
+
+    from openphone_sdk.list_calls import list_calls
+
+    with pytest.raises(ValueError):
+        list_calls("PN123", ["+1555"], max_results=0)
 

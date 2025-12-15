@@ -1,4 +1,6 @@
 import os
+
+import pytest
 from httpx import Response
 
 from openphone_client.models.send_message_v1_body import SendMessageV1Body
@@ -40,3 +42,16 @@ def test_send_message(httpx_mock):
 
     assert json.loads(req.content.decode()) == body.to_dict()
     assert out.data.id == "msg1"
+
+
+def test_send_message_requires_single_recipient():
+    os.environ["OPENPHONE_API_KEY"] = "k"
+    os.environ["OPENPHONE_BASE_URL"] = "https://api.openphone.com"
+
+    from openphone_sdk.send_message import send_message
+
+    with pytest.raises(ValueError):
+        send_message(SendMessageV1Body(content="hi", from_="+1555", to=[]))
+
+    with pytest.raises(ValueError):
+        send_message(SendMessageV1Body(content="hi", from_="+1555", to=["+1", "+2"]))

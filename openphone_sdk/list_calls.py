@@ -21,6 +21,11 @@ def list_calls(
 ) -> ListCallsV1Response200:
     """Return list of calls or raise RuntimeError on non-200."""
 
+    if not participants:
+        raise ValueError("participants must include at least one phone number")
+    if max_results < 1 or max_results > 100:
+        raise ValueError("max_results must be between 1 and 100")
+
     res = sync(
         client=client(),
         phone_number_id=phone_number_id,
